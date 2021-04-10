@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import './addToDo.css';
 import {AddToDoAction} from '../../store/actions/index'
-
+import ToDoList from '../todo/toDo';
 class AddToDo extends React.Component{
     constructor(){
         super();
@@ -11,15 +11,12 @@ class AddToDo extends React.Component{
 
     updateInput=(e)=>{
         e.preventDefault();
-        console.log('e ui', this.state);
         this.setState( {value:e.target.value});
     }
 
     handleAddToDo=(e)=>{
         this.props.AddToDoAction(this.state.value);
-        console.log('e', this.state);
         this.setState({value: ''});
-        console.log('e after', this.state);
     }
 
     render(){
@@ -30,6 +27,7 @@ class AddToDo extends React.Component{
                 <input onChange={(e)=> this.updateInput(e)}></input>
                 <button className='button' onClick = {(e)=>this.handleAddToDo(e)}>Add</button>
                 </React.Fragment>    
+                <ToDoList></ToDoList>
             </div>
             
         )
