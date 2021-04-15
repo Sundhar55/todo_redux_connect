@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import './todo.css';
 import {AddCompletedItemAction} from '../../store/actions/index'
-
+import {UpCircleOutlined} from '@ant-design/icons'
 class ToDoList extends React.Component{
     onSelectedItem=(e)=>{
         this.props.AddCompletedItemAction(e.target.value);
@@ -13,8 +13,11 @@ class ToDoList extends React.Component{
         const listItems = list.map((item, index)=>
             <li key={index}>
                 <label>
+                
                 <input type='checkbox'  onChange={(e)=>  this.onSelectedItem(e)}  value={item.value}></input>
                 {item.value}
+                  <UpCircleOutlined  />
+                  {index}
                 </label>
                 
                 </li>
