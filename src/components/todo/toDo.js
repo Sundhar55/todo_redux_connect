@@ -8,16 +8,19 @@ class ToDoList extends React.Component{
     onSelectedItem=(e)=>{
         this.props.AddCompletedItemAction(e.target.value);
     };
+
+    onMoveUp=(item)=>{
+        console.log('move up, ', item);
+    }
     render(){
         const list = this.props.todoListItems;
         const listItems = list.map((item, index)=>
             <li key={index}>
                 <label>
-                
                 <input type='checkbox'  onChange={(e)=>  this.onSelectedItem(e)}  value={item.value}></input>
                 {item.value}
-                  <UpCircleOutlined  />
-                  {index}
+                {index!==0 && <UpCircleOutlined  onClick={(e) => this.onMoveUp(item)} />}  
+                
                 </label>
                 
                 </li>
